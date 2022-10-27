@@ -1,3 +1,5 @@
+const { transform } = require("typescript")
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
@@ -33,6 +35,12 @@ module.exports = {
         green: "#4B7150",
         lightgreen: "#B5D49A",
         beige: "#E5E5E5",
+      },
+      keyframes: {
+        slideIn: {
+          "0%": { transform: "translate-x-0" },
+          "100%": { transform: "translate-x-20" },
+        },
       },
     },
   },

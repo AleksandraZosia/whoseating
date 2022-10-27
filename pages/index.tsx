@@ -5,7 +5,7 @@ import styles from "../styles/Home.module.css"
 import LongButton from "../components/atoms/LongButton"
 import MenuList from "../components/molecules/MenuList"
 import { useDispatch, useSelector } from "../store/store"
-import { getProductsState, addProduct } from "../store/slices/productsSlice"
+import { getProductsState } from "../store/slices/productsSlice"
 import ClickableIcon from "../components/atoms/ClickableIcon"
 import React from "react"
 import SecondaryHeader from "../components/atoms/SecondaryHeader"
@@ -15,12 +15,7 @@ import { AnimatePresence, motion } from "framer-motion"
 import { padString } from "../bussiness_logic/data_functions"
 
 const Home: NextPage = () => {
-  const dispatch = useDispatch()
-  const time = new Date()
-
-  const { products } = useSelector(getProductsState)
   const [menu, setMenu] = React.useState<boolean>(false)
-  console.log(products)
   return (
     <div className={styles.container}>
       <Head>
@@ -30,37 +25,27 @@ const Home: NextPage = () => {
       </Head>
 
       <main className={styles.main}>
-        <AnimatePresence>
-          {menu ? (
-            <motion.div
-              initial={{ x: 0 }}
-              animate={{ x: 1 }}
-              transition={{ duration: 0 }}
-              exit={{ x: 0 }}
-            >
-              <MenuList close={() => setMenu(!menu)} />{" "}
-            </motion.div>
-          ) : (
-            <>
-              <section className={styles.top}>
-                <ClickableIcon
-                  src="/menu.svg"
-                  alt="menu"
-                  handleClick={() => setMenu(!menu)}
-                />
+        <MenuList close={() => setMenu(!menu)} open={menu} />
 
-                <h1 className="mb-2.5 mx-6 mt-0.5 font-black">
-                  WHO's eating healthy?
-                </h1>
-                <LongButton
-                  text={padString("START")}
-                  href={"/eating-habits/add-meals/add-meals"}
-                />
-              </section>
-              <section className={styles.about}>
-                <SecondaryHeader title="About" />
-                <Description
-                  text="
+        <section className={styles.top}>
+          <ClickableIcon
+            src="/menu.svg"
+            alt="menu"
+            handleClick={() => setMenu(!menu)}
+          />
+
+          <h1 className="mb-2.5 mx-6 mt-0.5 font-black">
+            WHO's eating healthy?
+          </h1>
+          <LongButton
+            text={padString("START")}
+            href={"/eating-habits/add-meals/add-meals"}
+          />
+        </section>
+        <section className={styles.about}>
+          <SecondaryHeader title="About" />
+          <Description
+            text="
             About text what is it for and why do we need it . Long text. About
             text what is it for and why do we need it . Long text.About text
             what is it for and why do we need it . Long text.About text what is
@@ -69,25 +54,21 @@ const Home: NextPage = () => {
             text.About text what is it for and why do we need it . Long
             text.About text what is it for and why do we need it . Long
             text.About text what is it for and why do we need it ."
-                />
-              </section>
-              <section>
-                <SecondaryHeader title="Benefits" />
-                <div className="grid grid-cols-3 py-2 gap-2">
-                  {["a", "b", "c", "d", "e", "f"].map((item) => (
-                    <Benefit name={item} key={item} />
-                  ))}
-                </div>
-              </section>
-              <section>
-                <SecondaryHeader title="WHO's recommendation short description" />
-                <Description text="Very short description of what WHO recommends. Very short description of what WHO recommends. Very short description of what WHO recommends. Very short description of what WHO recommends." />
-                <LongButton text="Read Full Description" href={"/about"} />
-              </section>
-            </>
-          )}
-        </AnimatePresence>
-        )
+          />
+        </section>
+        <section>
+          <SecondaryHeader title="Benefits" />
+          <div className="grid grid-cols-3 py-2 gap-2">
+            {["a", "b", "c", "d", "e", "f"].map((item) => (
+              <Benefit name={item} key={item} />
+            ))}
+          </div>
+        </section>
+        <section>
+          <SecondaryHeader title="WHO's recommendation short description" />
+          <Description text="Very short description of what WHO recommends. Very short description of what WHO recommends. Very short description of what WHO recommends. Very short description of what WHO recommends." />
+          <LongButton text="Read Full Description" href={"/about"} />
+        </section>
       </main>
 
       <footer className={styles.footer}>

@@ -6,6 +6,7 @@ import Head from "next/head"
 import React from "react"
 import SecondaryHeader from "../../components/atoms/SecondaryHeader"
 import FoodChart from "../../components/atoms/Chart"
+import MenuList from "../../components/molecules/MenuList"
 
 const FoodSummary = () => {
   const date = formatDate(new Date())
@@ -16,6 +17,7 @@ const FoodSummary = () => {
         <title>WHOs eating: Summary</title>
       </Head>
       <main>
+        <MenuList close={() => setMenu(false)} open={menu} />
         <TopSection
           title={date[0] + ", " + date[1]}
           close={() => setMenu(!menu)}

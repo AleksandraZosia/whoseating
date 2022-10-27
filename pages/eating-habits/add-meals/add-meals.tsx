@@ -35,34 +35,31 @@ const AddMeal = () => {
         <title>WHOseating: Your Meals</title>
       </Head>
       <main>
-        {menu ? (
-          <MenuList close={() => setMenu(!menu)} />
-        ) : (
-          <div>
-            <TopSection title={activeDate} close={() => setMenu(!menu)} />
-            <DaysSwiper dates={calendar} />
-            {MEALS.map((meal) => (
-              <AddSection
-                key={meal.header}
-                header={meal.header}
-                btnText={meal.btnText}
-                url={getToBeAddedMealId([meal]).reduce((acc, meal) => {
-                  acc = meal.params.id
-                  return acc
-                }, "")}
-                products={
-                  products.length > 0
-                    ? products.filter(
-                        (product) =>
-                          product.meal === meal.url &&
-                          product.date === activeDate
-                      )
-                    : undefined
-                }
-              />
-            ))}
-          </div>
-        )}
+        <MenuList close={() => setMenu(!menu)} open={menu} />
+
+        <div>
+          <TopSection title={activeDate} close={() => setMenu(!menu)} />
+          <DaysSwiper dates={calendar} />
+          {MEALS.map((meal) => (
+            <AddSection
+              key={meal.header}
+              header={meal.header}
+              btnText={meal.btnText}
+              url={getToBeAddedMealId([meal]).reduce((acc, meal) => {
+                acc = meal.params.id
+                return acc
+              }, "")}
+              products={
+                products.length > 0
+                  ? products.filter(
+                      (product) =>
+                        product.meal === meal.url && product.date === activeDate
+                    )
+                  : undefined
+              }
+            />
+          ))}
+        </div>
       </main>
     </>
   )

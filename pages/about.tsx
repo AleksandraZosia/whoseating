@@ -12,11 +12,9 @@ const About: NextPage = () => {
         <title>WHOseating: About Us</title>
       </Head>
       <main>
-        {menu ? (
-          <MenuList close={() => setMenu(!menu)} />
-        ) : (
-          <TopSection title="About us" close={() => setMenu(!menu)} />
-        )}
+        <MenuList close={() => setMenu(!menu)} open={menu} />
+
+        <TopSection title="About us" close={() => setMenu(!menu)} />
       </main>
     </>
   )

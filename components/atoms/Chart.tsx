@@ -30,7 +30,7 @@ const FoodChart = () => {
       loc: calcMacros(todaysFoods, "f", sumAmount(todaysFoods)),
     },
   ]
-  console.log(todaysFoods)
+
   const data = {
     name: "nivo",
     color: "hsl(217, 70%, 50%)",

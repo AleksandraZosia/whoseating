@@ -1,6 +1,5 @@
 import { configureStore, ThunkAction, Action } from "@reduxjs/toolkit"
 import productsReducer from "./slices/productsSlice"
-import pageReducer from "./slices/pageSlice"
 import dateReducer from "./slices/dateSlice"
 import searchedProductsReducer from "./slices/searchedProductsSlice"
 import {
@@ -11,11 +10,9 @@ import type { TypedUseSelectorHook } from "react-redux"
 import storage from "redux-persist/lib/storage"
 import { combineReducers } from "redux"
 import { persistReducer } from "redux-persist"
-import thunk from "redux-thunk"
 
 const reducers = combineReducers({
   products: productsReducer,
-  page: pageReducer,
   date: dateReducer,
   searchedProducts: searchedProductsReducer,
 })
