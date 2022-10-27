@@ -7,9 +7,11 @@ interface Props {
 
 const Button = ({ text, href }: Props) => {
   return (
-    <div className="bg-green text-white py-1 px-4 text-xs rounded-2xl text-center w-fit">
-      <Link href={href}>{text}</Link>
-    </div>
+    <Link href={href}>
+      <button className="bg-green text-white py-1 px-4 text-xs rounded-2xl text-center w-fit">
+        {text}
+      </button>
+    </Link>
   )
 }
 

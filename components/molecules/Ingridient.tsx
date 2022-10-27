@@ -2,6 +2,7 @@ import ClickableIcon from "../atoms/ClickableIcon"
 import React from "react"
 import { useDispatch, useSelector } from "../../store/store"
 import { addProduct, deleteProduct } from "../../store/slices/productsSlice"
+import { addSearchedProduct } from "../../store/slices/searchedProductsSlice"
 import ProductSummary from "../atoms/ProductSummary"
 import AmountInput from "../atoms/AmountInput"
 
@@ -12,14 +13,26 @@ interface Props {
   date: string
   nutrients?: any
   id: string
+  handleClick?: (arg: any) => void
+  addSearch?: (arg: any) => void
 }
 
-const Ingridient = ({ ingName, ingAmount = 0, meal, nutrients, id }: Props) => {
+const Ingridient = ({
+  ingName,
+  ingAmount = 0,
+  meal,
+  nutrients,
+  id,
+  handleClick = () => null,
+  addSearch,
+}: Props) => {
   const dispatch = useDispatch()
   const [isChoosen, setIsChoosen] = React.useState<boolean>(false)
   const [amount, setAmount] = React.useState<number>(0)
   const choosenDate = useSelector((state) => state.date.date)
-  const products = useSelector((state) => state.products.products)
+  const recentSearches = useSelector(
+    (state) => state.searchedProducts.searchedProducts
+  )
   return (
     <div className="flex flex-col">
       <div className="flex justify-between px-2">
@@ -40,17 +53,26 @@ const Ingridient = ({ ingName, ingAmount = 0, meal, nutrients, id }: Props) => {
             h={12}
             handleClick={() => {
               dispatch(deleteProduct(id))
-              console.log(
-                "Produkty po usunięciu",
-                products.filter((product) => product.id !== id)
-              )
             }}
           />
         ) : (
           <ClickableIcon
             src="/add_ing.svg"
             alt="add product"
-            handleClick={() => setIsChoosen(!isChoosen)}
+            handleClick={() => {
+              setIsChoosen(!isChoosen)
+              dispatch(
+                addSearchedProduct({
+                  name: ingName,
+                  id: id,
+                  nutrients: {
+                    f: nutrients.f,
+                    c: nutrients.c,
+                    p: nutrients.p,
+                  },
+                })
+              )
+            }}
           />
         )}
       </div>
@@ -78,15 +100,8 @@ const Ingridient = ({ ingName, ingAmount = 0, meal, nutrients, id }: Props) => {
                   },
                 })
               )
-              // appStorage(
-              //   id,
-              //   JSON.stringify({
-              //     date: choosenDate,
-              //     amount: amount,
-              //     id: id,
-              //     meal: meal,
-              //   })
-              // )
+              setIsChoosen(!isChoosen)
+              handleClick([])
             }}
           >
             ADD

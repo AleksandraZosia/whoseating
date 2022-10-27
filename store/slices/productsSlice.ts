@@ -1,12 +1,12 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit"
 import type { RootState } from "../store"
-interface Nutrients {
+export interface Nutrients {
   f: number
   c: number
   p: number
 }
 
-interface Product {
+export interface Product {
   name: string
   date: string
   meal: string
@@ -15,7 +15,7 @@ interface Product {
   nutrients: Nutrients
 }
 
-interface ProductsState {
+export interface ProductsState {
   products: Product[]
 }
 

@@ -4,9 +4,10 @@ import { calcMacros, sumAmount } from "../../bussiness_logic/data_functions"
 interface Props {
   bg?: string
   products: Array<any>
+  handleClick?: (arg: any) => void
 }
 
-const ProductsList = ({ bg, products }: Props) => {
+const ProductsList = ({ bg, products, handleClick }: Props) => {
   return (
     <>
       <div className="rounded-xl bg-white flex flex-col gap-2 pt-2  text-xs divide-y">
@@ -19,6 +20,7 @@ const ProductsList = ({ bg, products }: Props) => {
             id={product.id}
             key={product.id + product.meal}
             meal={product.meal}
+            handleClick={handleClick}
           />
         ))}
         {bg ? (
