@@ -6,30 +6,40 @@ import {
 } from "../../bussiness_logic/data_functions"
 import { useSelector } from "../../store/store"
 
-const FoodChart = () => {
+interface Child {
+  name: string
+  color: string
+  loc: number
+}
+
+interface Props {
+  children: Child[]
+}
+
+const FoodChart = ({ children }: Props) => {
   const foods = useSelector((state) => state.products.products)
   const today = formatDate(new Date())
   const todaysFoods = foods.filter(
     (product) => product.date === today.join(",")
   )
 
-  const children = [
-    {
-      name: "proteins",
-      color: "hsl(77,70%, 50%)",
-      loc: calcMacros(todaysFoods, "p", sumAmount(todaysFoods)),
-    },
-    {
-      name: "carbohydrates",
-      color: "hsl(355, 70%, 50%)",
-      loc: calcMacros(todaysFoods, "c", sumAmount(todaysFoods)),
-    },
-    {
-      name: "fat",
-      color: "hsl(13, 70%, 50%)",
-      loc: calcMacros(todaysFoods, "f", sumAmount(todaysFoods)),
-    },
-  ]
+  // const children = [
+  //   {
+  //     name: "proteins",
+  //     color: "hsl(77,70%, 50%)",
+  //     loc: calcMacros(todaysFoods, "p", sumAmount(todaysFoods)),
+  //   },
+  //   {
+  //     name: "carbohydrates",
+  //     color: "hsl(355, 70%, 50%)",
+  //     loc: calcMacros(todaysFoods, "c", sumAmount(todaysFoods)),
+  //   },
+  //   {
+  //     name: "fat",
+  //     color: "hsl(13, 70%, 50%)",
+  //     loc: calcMacros(todaysFoods, "f", sumAmount(todaysFoods)),
+  //   },
+  // ]
 
   const data = {
     name: "nivo",
