@@ -2,6 +2,7 @@ import { configureStore, ThunkAction, Action } from "@reduxjs/toolkit"
 import productsReducer from "./slices/productsSlice"
 import pageReducer from "./slices/pageSlice"
 import dateReducer from "./slices/dateSlice"
+import searchedProductsReducer from "./slices/searchedProductsSlice"
 import {
   useDispatch as useDispatchBase,
   useSelector as useSelectorBase,
@@ -16,12 +17,13 @@ const reducers = combineReducers({
   products: productsReducer,
   page: pageReducer,
   date: dateReducer,
+  searchedProducts: searchedProductsReducer,
 })
 
 const persistConfig = {
   key: "root",
   storage,
-  whitelist: ["products"],
+  whitelist: ["products", "date"],
 }
 
 const persistedReducer = persistReducer(persistConfig, reducers)
@@ -29,7 +31,6 @@ const persistedReducer = persistReducer(persistConfig, reducers)
 export const store = configureStore({
   reducer: persistedReducer,
 })
-//export type AppState = ReturnType<AppStore["getState"]>
 
 export type RootState = ReturnType<typeof store.getState>
 

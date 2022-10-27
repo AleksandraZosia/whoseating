@@ -24,7 +24,6 @@ const ProductInput = ({ clickClose, setFoods }: Props) => {
         .get(`${base_url}&query=${productName}`)
         .then((res) => setFoods(res.data.foods))
         .catch((err) => console.log(err))
-      console.log(productName)
     }
     productName.length > 2 ? getData() : null
   }, [productName])
