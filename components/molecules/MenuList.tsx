@@ -36,9 +36,7 @@ const MenuList = ({ close, open }: Props) => {
               key={option.id}
               className={active == option?.url ? "bg-darkgreen px-3" : "px-3"}
             >
-              <Link href={option.url}>
-                <SecondaryHeader title={option.name} onClick={close} />
-              </Link>
+              <Link href={option.url}>{option.name}</Link>
             </div>
           ))}
         </div>
