@@ -11,28 +11,35 @@ interface Props {
 const DaysSwiper = ({ dates }: Props) => {
   const dispatch = useDispatch()
   const currentDate = useSelector((state) => state.date.date)
-  const [active, setActive] = React.useState<number>(dates.indexOf(currentDate))
+
+  const index = dates.reduce((acc: number, date: Array<string>, i: number) => {
+    if (date.join() === currentDate) {
+      acc = i
+    }
+    return acc
+  }, 0)
+  const [active, setActive] = React.useState<number>(index)
+
   return (
     <Swiper
       slidesPerView={3}
       spaceBetween={20}
+      initialSlide={active}
       onSlideChange={(swiper) => {
         dispatch(setDate(dates[swiper.activeIndex].join()))
         setActive(swiper.activeIndex)
       }}
-      initialSlide={active}
       centeredSlides={true}
       centerInsufficientSlides={true}
-      centeredSlidesBounds
+      centeredSlidesBounds={true}
+      onTap={(swiper) => {
+        setActive(swiper.clickedIndex)
+        dispatch(setDate(dates[swiper.clickedIndex]))
+      }}
+      slideToClickedSlide
     >
       {dates.map((day: Array<string>, i: number) => (
-        <SwiperSlide
-          key={day[0]}
-          onClick={() => {
-            dispatch(setDate(day.join()))
-            setActive(i)
-          }}
-        >
+        <SwiperSlide key={day[0]}>
           <div
             className={
               active === i
