@@ -25,7 +25,7 @@ const AddMeal = () => {
   const products = useSelector((state) => state.products.products)
   const activeDate = useSelector((state) => state.date.date)
   React.useEffect(() => {
-    dispatch(setDate(fromatedToday.join()))
+    if (!activeDate) dispatch(setDate(fromatedToday.join()))
   }, [])
 
   const calendar = calcCalendar()
