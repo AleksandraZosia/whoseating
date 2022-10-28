@@ -21,12 +21,14 @@ const DaysSwiper = ({ dates }: Props) => {
     }, 0)
 
   const today = formatDate(new Date()).join()
-  const [active, setActive] = React.useState<number>(calcInitIndex(today))
-  console.log(currentDate, today)
+  const [active, setActive] = React.useState<number>(
+    calcInitIndex(currentDate || today)
+  )
+  console.log(currentDate)
 
   return (
     <Swiper
-      initialSlide={calcInitIndex(currentDate || today)}
+      initialSlide={active}
       slidesPerView={3}
       spaceBetween={20}
       onSlideChange={(swiper) => {
@@ -41,6 +43,7 @@ const DaysSwiper = ({ dates }: Props) => {
         dispatch(setDate(dates[swiper.clickedIndex].join()))
       }}
       slideToClickedSlide
+      onBeforeInit={() => console.log(currentDate)}
     >
       {dates.map((day: Array<string>, i: number) => (
         <SwiperSlide key={day[0]}>
