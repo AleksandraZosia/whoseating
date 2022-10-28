@@ -34,19 +34,27 @@ const FoodSummary = () => {
           title={date[0] + ", " + date[1]}
           close={() => setMenu(!menu)}
         />
-        <SecondaryHeader title="Today's summary" />
-        <div>
-          <h3>Macronutritiens composition</h3>
-          <div className="h-40 border-2 border-green">
-            <FoodChart children={macrosData(todaysFoods)} />
+        {todaysFoods.length ? (
+          <div>
+            <SecondaryHeader title="Today's summary" />
+            <div>
+              <h3>Macronutritiens composition</h3>
+              <div className="h-40 border-2 border-green">
+                <FoodChart children={macrosData(todaysFoods)} />
+              </div>
+              <h3>Variety Points</h3>
+              <div className="h-40">
+                <FoodChart
+                  children={varietyPointsData(
+                    todaysFoods.map((food) => food.name)
+                  )}
+                />
+              </div>
+            </div>
           </div>
-          <h3>Variety Points</h3>
-          <div className="h-40">
-            <FoodChart
-              children={varietyPointsData(todaysFoods.map((food) => food.name))}
-            />
-          </div>
-        </div>
+        ) : (
+          <div>You haven't added any ingridinets</div>
+        )}
         <LongButton
           text="+ ADD TODAY'S MEAL"
           href="/eating-habits/add-meals/add-meals"
