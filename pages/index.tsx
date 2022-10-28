@@ -4,18 +4,23 @@ import Image from "next/image"
 import styles from "../styles/Home.module.css"
 import LongButton from "../components/atoms/LongButton"
 import MenuList from "../components/molecules/MenuList"
-import { useDispatch, useSelector } from "../store/store"
-import { getProductsState } from "../store/slices/productsSlice"
+
 import ClickableIcon from "../components/atoms/ClickableIcon"
 import React from "react"
 import SecondaryHeader from "../components/atoms/SecondaryHeader"
 import Benefit from "../components/atoms/Benefit"
 import Description from "../components/atoms/Description"
-import { AnimatePresence, motion } from "framer-motion"
-import { padString } from "../bussiness_logic/data_functions"
+import {
+  padString,
+  calcFrequency,
+  calcVarietyPoints,
+} from "../bussiness_logic/data_functions"
+import { EXAMPLE_INPUT } from "../bussiness_logic/constans"
 
 const Home: NextPage = () => {
   const [menu, setMenu] = React.useState<boolean>(false)
+  const frequency = calcFrequency(EXAMPLE_INPUT)
+  console.log(calcFrequency(EXAMPLE_INPUT), calcVarietyPoints(frequency))
   return (
     <div className={styles.container}>
       <Head>
