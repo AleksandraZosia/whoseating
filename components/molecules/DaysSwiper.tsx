@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "../../store/store"
 import "swiper/css/effect-fade"
 import { setDate } from "../../store/slices/dateSlice"
 import React from "react"
+import { formatDate } from "../../bussiness_logic/data_functions"
 interface Props {
   dates: any
 }
@@ -11,20 +12,23 @@ interface Props {
 const DaysSwiper = ({ dates }: Props) => {
   const dispatch = useDispatch()
   const currentDate = useSelector((state) => state.date.date)
+  const calcInitIndex = (activeDate: string) =>
+    dates.reduce((acc: number, date: Array<string>, i: number) => {
+      if (date.join() === activeDate) {
+        acc = i
+      }
+      return acc
+    }, 0)
 
-  const index = dates.reduce((acc: number, date: Array<string>, i: number) => {
-    if (date.join() === currentDate) {
-      acc = i
-    }
-    return acc
-  }, 0)
-  const [active, setActive] = React.useState<number>(index)
+  const today = formatDate(new Date()).join()
+  const [active, setActive] = React.useState<number>(calcInitIndex(today))
+  console.log(currentDate, today)
 
   return (
     <Swiper
+      initialSlide={calcInitIndex(currentDate || today)}
       slidesPerView={3}
       spaceBetween={20}
-      initialSlide={active}
       onSlideChange={(swiper) => {
         dispatch(setDate(dates[swiper.activeIndex].join()))
         setActive(swiper.activeIndex)
@@ -34,7 +38,7 @@ const DaysSwiper = ({ dates }: Props) => {
       centeredSlidesBounds={true}
       onTap={(swiper) => {
         setActive(swiper.clickedIndex)
-        dispatch(setDate(dates[swiper.clickedIndex]))
+        dispatch(setDate(dates[swiper.clickedIndex].join()))
       }}
       slideToClickedSlide
     >
