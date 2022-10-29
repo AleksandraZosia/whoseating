@@ -60,8 +60,8 @@ const formatDate = (date: Date) => {
   return [weekDay, " " + date1]
 }
 const padString = (str: string) => {
-  const beggining = str.padStart(10, " ")
-  const newStr = beggining.padEnd(10, " ")
+  const newStr = str.padStart(20, " ")
+  console.log(newStr)
   return newStr
 }
 

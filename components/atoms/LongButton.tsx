@@ -1,17 +1,20 @@
-import React from "react"
-import Link from "next/link"
+import { useRouter } from "next/router"
 
 interface Props {
   text: string
   href: string
-  styling?: string
 }
 
-const LongButton = ({ text, href, styling }: Props) => {
+const LongButton = ({ text, href }: Props) => {
+  const router = useRouter()
+
   return (
-    <div className="bg-opacity-[0.85] py-0.5 rounded-2xl text-xs bg-green text-white w-11/12 text-center">
-      <Link href={href}>{text}</Link>
-    </div>
+    <button
+      className="bg-opacity-[0.85] py-1 rounded-2xl text-xs bg-green text-white text-center w-10/12"
+      onClick={() => router.push(href)}
+    >
+      {text}
+    </button>
   )
 }
 

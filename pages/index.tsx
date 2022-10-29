@@ -4,7 +4,7 @@ import Image from "next/image"
 import styles from "../styles/Home.module.css"
 import LongButton from "../components/atoms/LongButton"
 import MenuList from "../components/molecules/MenuList"
-
+import Link from "next/link"
 import ClickableIcon from "../components/atoms/ClickableIcon"
 import React from "react"
 import SecondaryHeader from "../components/atoms/SecondaryHeader"
@@ -42,10 +42,8 @@ const Home: NextPage = () => {
           <h1 className="mb-2.5 mx-6 mt-0.5 font-black">
             WHO's eating healthy?
           </h1>
-          <LongButton
-            text={padString("START")}
-            href={"/eating-habits/add-meals/add-meals"}
-          />
+
+          <LongButton href="/eating-habits/summary" text={"START"} />
         </section>
         <section className={styles.about}>
           <SecondaryHeader title="About" />
