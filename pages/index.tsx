@@ -39,7 +39,7 @@ const Home: NextPage = () => {
             handleClick={() => setMenu(!menu)}
           />
 
-          <h1 className="mb-2.5 mx-6 mt-0.5 font-black">
+          <h1 className="mb-2.5 mx-6 mt-0.5 font-black text-darkgreen dark:text-beige">
             WHO's eating healthy?
           </h1>
 

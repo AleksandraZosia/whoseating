@@ -36,7 +36,11 @@ const Ingridient = ({
   return (
     <div className="flex flex-col">
       <div className="flex justify-between px-2">
-        <div className="flex flex-col text-xs w-full">
+        <div
+          className={`flex flex-col text-xs w-full ${
+            ingAmount ? "text-green" : "text-darkestgreen"
+          }`}
+        >
           <p>{ingName}</p>
           <ProductSummary
             f={nutrients.f}
