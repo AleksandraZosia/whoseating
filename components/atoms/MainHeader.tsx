@@ -3,7 +3,11 @@ interface Props {
 }
 
 const MainHeader = ({ title }: Props) => {
-  return <h1 className="text-center font-black text-darkgreen ">{title}</h1>
+  return (
+    <h1 className="text-center font-black text-darkgreen dark:text-beige ">
+      {title}
+    </h1>
+  )
 }
 
 export default MainHeader
