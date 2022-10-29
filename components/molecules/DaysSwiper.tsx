@@ -51,7 +51,7 @@ const DaysSwiper = ({ dates }: Props) => {
             className={
               active === i
                 ? "rounded-xl p-2 text-xs text-center bg-green text-white"
-                : "rounded-xl p-2 text-xs text-center bg-white"
+                : "rounded-xl p-2 text-xs text-center bg-white text-darkgreen"
             }
           >
             <p>{day[1]}</p>
