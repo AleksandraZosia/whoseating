@@ -8,6 +8,10 @@ interface Props {
 }
 
 const ClickableIcon = ({ handleClick, src, alt, h = 24, w = 24 }: Props) => {
+  const darkMode = () =>
+    window.matchMedia &&
+    window.matchMedia("(prefers-color-scheme: dark)").matches
+  console.log(darkMode())
   return (
     <div onClick={handleClick} className="h-fit w-fit">
       <Image
@@ -16,6 +20,7 @@ const ClickableIcon = ({ handleClick, src, alt, h = 24, w = 24 }: Props) => {
         height={h}
         width={w}
         className="dark:text-white"
+        style={darkMode() ? { color: "white" } : {}}
       />
     </div>
   )
