@@ -38,8 +38,15 @@ const AddMeal = () => {
         <MenuList close={() => setMenu(!menu)} open={menu} />
 
         <div>
-          <TopSection title={activeDate} close={() => setMenu(!menu)} />
-          <DaysSwiper dates={calendar} />
+          <TopSection
+            title={
+              "My meals, " + activeDate.slice(0, 3) + activeDate.slice(4, -5)
+            }
+            close={() => setMenu(!menu)}
+          />
+          <div className="pt-4 pb-3">
+            <DaysSwiper dates={calendar} />
+          </div>
           {MEALS.map((meal) => (
             <AddSection
               key={meal.header}

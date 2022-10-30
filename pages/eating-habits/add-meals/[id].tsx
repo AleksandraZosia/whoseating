@@ -12,6 +12,7 @@ import {
 } from "../../../bussiness_logic/data_functions"
 import { MEALS } from "../../../bussiness_logic/constans"
 import { GetStaticProps, GetStaticPaths } from "next"
+import Section from "../../../components/layouts/Section"
 
 const SearchMeal = ({ meals }: any) => {
   const [data, setData] = React.useState<any>([])
@@ -39,7 +40,7 @@ const SearchMeal = ({ meals }: any) => {
       })
     )
   }, [data])
-
+  console.log(currentDate.slice(0, -5))
   return (
     <main>
       <TopSection
@@ -51,20 +52,28 @@ const SearchMeal = ({ meals }: any) => {
             : currentDate)
         }
       />
-      <ProductInput setFoods={setData} clickClose={setSearchedProducts} />
-      <SecondaryHeader title="Search Results" />
-      <ProductsList
-        products={searchedProducts}
-        handleClick={setSearchedProducts}
-      />
-      <SecondaryHeader title="Selected Products" />
-      <ProductsList
-        products={addedProducts.filter(
-          (product) => product.meal === meal && product.date === currentDate
-        )}
-      />
-      <SecondaryHeader title="Recent Searches" />
-      <ProductsList products={recentSearches} />
+      <Section>
+        <ProductInput setFoods={setData} clickClose={setSearchedProducts} />
+      </Section>
+      <Section>
+        <SecondaryHeader title="Search Results" />
+        <ProductsList
+          products={searchedProducts}
+          handleClick={setSearchedProducts}
+        />
+      </Section>
+      <Section>
+        <SecondaryHeader title="Selected Products" />
+        <ProductsList
+          products={addedProducts.filter(
+            (product) => product.meal === meal && product.date === currentDate
+          )}
+        />
+      </Section>
+      <Section>
+        <SecondaryHeader title="Recent Searches" />
+        <ProductsList products={recentSearches} />
+      </Section>
     </main>
   )
 }

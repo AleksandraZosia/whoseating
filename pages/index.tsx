@@ -16,6 +16,7 @@ import {
   calcVarietyPoints,
 } from "../bussiness_logic/data_functions"
 import { EXAMPLE_INPUT } from "../bussiness_logic/constans"
+import Section from "../components/layouts/Section"
 
 const Home: NextPage = () => {
   const [menu, setMenu] = React.useState<boolean>(false)
@@ -32,20 +33,20 @@ const Home: NextPage = () => {
       <main className={styles.main}>
         <MenuList close={() => setMenu(!menu)} open={menu} />
 
-        <section className={styles.top}>
+        <section className={`${styles.top} "margin"`}>
           <ClickableIcon
-            src="/menu.svg"
+            src="/menu_black.svg"
             alt="menu"
             handleClick={() => setMenu(!menu)}
           />
 
-          <h1 className="mb-2.5 mx-6 mt-0.5 font-black text-darkgreen dark:text-beige">
+          <h1 className="mb-2.5  mt-0.5 font-black text-lg leading-none text-darkgreen dark:text-beige">
             WHO's eating healthy?
           </h1>
 
           <LongButton href="/eating-habits/summary" text={"START"} />
         </section>
-        <section className={styles.about}>
+        <Section>
           <SecondaryHeader title="About" />
           <Description
             text="
@@ -58,20 +59,20 @@ const Home: NextPage = () => {
             text.About text what is it for and why do we need it . Long
             text.About text what is it for and why do we need it ."
           />
-        </section>
-        <section>
+        </Section>
+        <Section>
           <SecondaryHeader title="Benefits" />
           <div className="grid grid-cols-3 py-2 gap-2">
             {["a", "b", "c", "d", "e", "f"].map((item) => (
               <Benefit name={item} key={item} />
             ))}
           </div>
-        </section>
-        <section>
+        </Section>
+        <Section>
           <SecondaryHeader title="WHO's recommendation short description" />
           <Description text="Very short description of what WHO recommends. Very short description of what WHO recommends. Very short description of what WHO recommends. Very short description of what WHO recommends." />
           <LongButton text="Read Full Description" href={"/about"} />
-        </section>
+        </Section>
       </main>
 
       <footer className={styles.footer}>

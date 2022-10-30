@@ -7,9 +7,9 @@ interface Props {
   w?: number
 }
 
-const ClickableIcon = ({ handleClick, src, alt, h = 25, w = 25 }: Props) => {
+const ClickableIcon = ({ handleClick, src, alt, h = 24, w = 24 }: Props) => {
   return (
-    <div onClick={handleClick} className="h-fit w-fit">
+    <div onClick={handleClick} className="h-fit w-fit dark:text-white">
       <Image src={src} alt={alt} height={h} width={w} />
     </div>
   )
