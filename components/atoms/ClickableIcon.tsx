@@ -19,8 +19,7 @@ const ClickableIcon = ({ handleClick, src, alt, h = 24, w = 24 }: Props) => {
         alt={alt}
         height={h}
         width={w}
-        className="dark:text-white"
-        style={darkMode() ? { color: "white" } : {}}
+        className={`${darkMode() ? "invert" : ""}`}
       />
     </div>
   )
