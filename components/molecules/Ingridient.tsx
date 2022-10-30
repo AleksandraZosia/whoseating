@@ -34,7 +34,7 @@ const Ingridient = ({
     (state) => state.searchedProducts.searchedProducts
   )
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col dark:invert bg-darkestgreen">
       <div className="flex justify-between px-2">
         <div
           className={`flex flex-col text-xs w-full ${
