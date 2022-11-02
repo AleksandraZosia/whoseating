@@ -25,12 +25,12 @@ const FoodSummary = () => {
     calcVarietyPoints(calcFrequency(todaysFoods.map((food) => food.name)))
   )
   return (
-    <>
+    <div>
       <Head>
         <title>WHOs eating: Summary</title>
       </Head>
-      <main>
-        <MenuList close={() => setMenu(false)} open={menu} />
+      <main className="min-h-screen max-w-screen flex flex-col ">
+        <MenuList close={() => setMenu(!menu)} open={menu} />
         <TopSection
           title={"My Stats, " + date[0] + " " + date[1].slice(0, -5)}
           close={() => setMenu(!menu)}
@@ -65,7 +65,7 @@ const FoodSummary = () => {
           />
         </Section>
       </main>
-    </>
+    </div>
   )
 }
 

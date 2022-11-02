@@ -42,7 +42,7 @@ const SearchMeal = ({ meals }: any) => {
   }, [data])
   console.log(currentDate.slice(0, -5))
   return (
-    <main>
+    <main className="min-h-screen max-w-screen">
       <TopSection
         title={
           meals.title +

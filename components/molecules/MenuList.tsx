@@ -2,6 +2,7 @@ import ClickableIcon from "../atoms/ClickableIcon"
 import React from "react"
 import SecondaryHeader from "../atoms/SecondaryHeader"
 import Link from "next/link"
+import Section from "../layouts/Section"
 interface Props {
   close?: () => void
   open: boolean
@@ -23,18 +24,20 @@ const MenuList = ({ close, open }: Props) => {
     >
       <div className={`fixed inset-0`} onClick={close} />
       <div>
-        <div className="fixed left-0 h-full shadow-lg max-w-screen-sm bg-green text-white  min-h-screen">
-          <ClickableIcon
-            src="/close.svg"
-            alt="close"
-            handleClick={close}
-            h={20}
-            w={20}
-          />
+        <div className="fixed  left-0 h-full shadow-lg max-w-screen-sm bg-green bg-opacity-90 text-white  min-h-screen">
+          <div className="p-6">
+            <ClickableIcon
+              src="/close.svg"
+              alt="close"
+              handleClick={close}
+              h={20}
+              w={20}
+            />
+          </div>
           {options.map((option) => (
             <div
               key={option.id}
-              className={active == option?.url ? "bg-darkgreen px-3" : "px-3"}
+              className={`px-6 ${active == option?.url && "bg-darkgreen"}`}
             >
               <Link href={option.url}>{option.name}</Link>
             </div>
