@@ -31,7 +31,7 @@ const Home: NextPage = () => {
       </Head>
 
       <main className={styles.main}>
-        <MenuList close={() => setMenu(!menu)} open={menu} />
+        <MenuList close={() => setMenu(false)} open={menu} />
 
         <section className={`${styles.top} "margin"`}>
           <ClickableIcon

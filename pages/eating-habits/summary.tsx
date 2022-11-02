@@ -30,7 +30,7 @@ const FoodSummary = () => {
         <title>WHOs eating: Summary</title>
       </Head>
       <main className="min-h-screen max-w-screen flex flex-col ">
-        <MenuList close={() => setMenu(!menu)} open={menu} />
+        <MenuList close={() => setMenu(false)} open={menu} />
         <TopSection
           title={"My Stats, " + date[0] + " " + date[1].slice(0, -5)}
           close={() => setMenu(!menu)}
