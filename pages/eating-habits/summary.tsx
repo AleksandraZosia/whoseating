@@ -12,6 +12,7 @@ import {
   calcFrequency,
   calcVarietyPoints,
 } from "../../bussiness_logic/data_functions"
+import Section from "../../components/layouts/Section"
 
 const FoodSummary = () => {
   const date = formatDate(new Date())
@@ -24,25 +25,27 @@ const FoodSummary = () => {
     calcVarietyPoints(calcFrequency(todaysFoods.map((food) => food.name)))
   )
   return (
-    <>
+    <div>
       <Head>
         <title>WHOs eating: Summary</title>
       </Head>
-      <main>
-        <MenuList close={() => setMenu(false)} open={menu} />
+      <main className="min-h-screen max-w-screen flex flex-col ">
+        <MenuList close={() => setMenu(!menu)} open={menu} />
         <TopSection
-          title={date[0] + ", " + date[1]}
+          title={"My Stats, " + date[0] + " " + date[1].slice(0, -5)}
           close={() => setMenu(!menu)}
         />
         {todaysFoods.length ? (
-          <div>
-            <SecondaryHeader title="Today's summary" />
-            <div>
-              <h3>Macronutritiens composition</h3>
+          <div className="pt-3">
+            <Section>
+              <SecondaryHeader title="Today's Macronutrinents" />
+
               <div className="h-40 border-2 border-green">
                 <FoodChart children={macrosData(todaysFoods)} />
               </div>
-              <h3>Variety Points</h3>
+            </Section>
+            <Section>
+              <SecondaryHeader title={"Today's variety points"} />
               <div className="h-40">
                 <FoodChart
                   children={varietyPointsData(
@@ -50,17 +53,19 @@ const FoodSummary = () => {
                   )}
                 />
               </div>
-            </div>
+            </Section>
           </div>
         ) : (
           <div>You haven't added any ingridinets</div>
         )}
-        <LongButton
-          text="+ ADD TODAY'S MEAL"
-          href="/eating-habits/add-meals/add-meals"
-        />
+        <Section>
+          <LongButton
+            text="+ ADD TODAY'S MEAL"
+            href="/eating-habits/add-meals/add-meals"
+          />
+        </Section>
       </main>
-    </>
+    </div>
   )
 }
 

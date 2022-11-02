@@ -42,8 +42,7 @@ const DaysSwiper = ({ dates }: Props) => {
         setActive(swiper.clickedIndex)
         dispatch(setDate(dates[swiper.clickedIndex].join()))
       }}
-      slideToClickedSlide
-      onBeforeInit={() => console.log(currentDate)}
+      slideToClickedSlide={true}
     >
       {dates.map((day: Array<string>, i: number) => (
         <SwiperSlide key={day[0]}>
@@ -51,7 +50,7 @@ const DaysSwiper = ({ dates }: Props) => {
             className={
               active === i
                 ? "rounded-xl p-2 text-xs text-center bg-green text-white"
-                : "rounded-xl p-2 text-xs text-center bg-white"
+                : "rounded-xl p-2 text-xs text-center bg-white text-darkgreen"
             }
           >
             <p>{day[1]}</p>

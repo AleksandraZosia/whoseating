@@ -34,9 +34,13 @@ const Ingridient = ({
     (state) => state.searchedProducts.searchedProducts
   )
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col dark:invert ">
       <div className="flex justify-between px-2">
-        <div className="flex flex-col text-xs w-full">
+        <div
+          className={`flex flex-col text-xs w-full ${
+            ingAmount ? "text-green" : "text-darkestgreen"
+          }`}
+        >
           <p>{ingName}</p>
           <ProductSummary
             f={nutrients.f}
@@ -77,7 +81,7 @@ const Ingridient = ({
         )}
       </div>
       {isChoosen ? (
-        <div className="bg-[#E5E5E5] flex px-1 py-2 justify-between">
+        <div className="bg-[#E8E4DA] flex px-1 py-2 justify-between text-darkestgreen dark:bg-beige">
           <AmountInput
             handleChange={setAmount}
             amount={amount}

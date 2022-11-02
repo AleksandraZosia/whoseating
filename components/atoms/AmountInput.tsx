@@ -7,11 +7,15 @@ interface Props {
   amount: number
 }
 
-const AmountInput = ({ handleChange, measuringUnit, amount }: Props) => {
+const AmountInput = ({
+  handleChange,
+  measuringUnit = "grams",
+  amount,
+}: Props) => {
   const dispatch = useDispatch()
 
   return (
-    <label className="flex gap-2 w-1/5">
+    <label className="flex gap-2 w-1/5 ">
       <input
         type="number"
         onChange={(e) => handleChange(e.target.value)}

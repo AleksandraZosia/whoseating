@@ -14,7 +14,7 @@ interface Props {
 const AddSection = ({ header, btnText, url, products }: Props) => {
   const bg = "bg-[#4B7150] rounded-b-xl pb-2 px-2 bg-opacity-30"
   return (
-    <section className="grid-rows-3 space-y-3 py-1 justify-evenly">
+    <section className="grid-rows-3 space-y-3 py-1 justify-evenly margin">
       <SecondaryHeader title={header} />
       {products && products.length > 0 ? (
         <ProductsList bg={bg} products={products} />

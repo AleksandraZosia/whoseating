@@ -29,7 +29,7 @@ const ProductInput = ({ clickClose, setFoods }: Props) => {
   }, [productName])
 
   return (
-    <div className="flex border justify-center w-fit bg-white px-1 text-xs gap-2 justify-between rounded-xl">
+    <div className="flex border justify-center w-fit bg-white px-1 text-xs gap-2 justify-between rounded-xl text-darkestgreen focus:border dark:bg-darkgreen dark:text-beige border-none">
       <BiSearch />
       <input
         placeholder="search ingridients"
@@ -37,6 +37,7 @@ const ProductInput = ({ clickClose, setFoods }: Props) => {
         onChange={(e) => handleChange(e)}
         aria-label="search ingridients"
         value={productName}
+        className="bg-transparent"
       />
       <ClickableIcon
         src="/close.svg"

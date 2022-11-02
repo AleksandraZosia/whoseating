@@ -3,7 +3,7 @@
 }
 
 .main {
-  @apply min-h-screen m-0 flex flex-col space-y-2;
+  @apply min-h-screen  max-w-screen-sm flex flex-col space-y-2;
   /* min-height: 100vh;
   padding: 4rem 0;
   flex: 1;
@@ -14,7 +14,7 @@
 }
 
 .top {
-  @apply flex-col bg-[url("/HEROIMAGE.svg")] pt-3 pb-6 text-center text-darkgreen text-base font-black space-x-2 space-y-3;
+  @apply flex-col bg-[url("/HEROIMAGE.svg")] p-6 text-center text-darkgreen text-base font-black h-[21%] space-y-4  !m-0;
 }
 .footer {
   display: flex;

@@ -10,7 +10,7 @@ const LongButton = ({ text, href }: Props) => {
 
   return (
     <button
-      className="bg-opacity-[0.85] py-1 rounded-2xl text-xs bg-green text-white text-center w-10/12"
+      className="bg-opacity-[0.85] py-1 rounded-2xl text-xs bg-green text-white text-center w-full h-[18%]"
       onClick={() => router.push(href)}
     >
       {text}

@@ -21,7 +21,11 @@ a {
     color-scheme: dark;
   }
   body {
-    color: white;
-    background: black;
+    color: beige;
+    background: rgba(0, 8, 0, 0.972);
   }
+}
+
+.margin {
+  @apply px-6 pb-6;
 }
