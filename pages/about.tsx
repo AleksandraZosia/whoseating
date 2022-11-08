@@ -11,8 +11,8 @@ const About: NextPage = () => {
       <Head>
         <title>WHOseating: About Us</title>
       </Head>
-      <main className="min-h-screen max-w-screen-sm">
-        <MenuList close={() => setMenu(!menu)} open={menu} />
+      <main className="min-h-screen">
+        <MenuList close={() => setMenu(false)} open={menu} />
 
         <TopSection title="About us" close={() => setMenu(!menu)} />
       </main>

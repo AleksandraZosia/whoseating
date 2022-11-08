@@ -1,3 +1,6 @@
+import { Product } from "../store/slices/productsSlice"
+import { PERFECT_MACROS } from "./constans"
+
 const formatToPercentage = (arg: number) => {
   const percentage = arg * 100 + "%"
   return percentage
@@ -14,7 +17,7 @@ const calcMacros = (arr: Array<any>, nutrient: string, amount: number) => {
   return nutrientPercentage.toFixed(2)
 }
 
-const sumAmount = (arr: Array<any>) =>
+const sumAmount = (arr: Product[]) =>
   arr.reduce((acc, product) => {
     acc = acc + +product.amount
     return acc
@@ -22,6 +25,30 @@ const sumAmount = (arr: Array<any>) =>
 
 const sumMacros = (arr: Array<number>) => {
   return arr.reduce((a, b) => a + b, 0)
+}
+
+const checkMacrosPercentage = (data: Array<any>) => {
+  const total = data.reduce((total, datum) => {
+    const macro = datum.id
+    type macroName = keyof typeof PERFECT_MACROS
+    const macroName: macroName = macro.toString()
+    
+    if (
+      datum.percentage >= PERFECT_MACROS[macroName]["MIN"] &&
+      datum.percentage <= PERFECT_MACROS[macroName]["MAX"]
+    ) {
+      total = total + 1
+    }
+    return total
+  }, 0)
+
+  if (total === 0) {
+    return "bad"
+  }
+  if (total < 2) {
+    return "so-so"
+  }
+  return "great"
 }
 
 const calcFrequency = (arr: Array<any>) => {
@@ -63,6 +90,10 @@ const padString = (str: string) => {
   const newStr = str.padStart(20, " ")
   console.log(newStr)
   return newStr
+}
+
+const startWithCapital = (arg: string) => {
+  return arg.slice(0, 1).toUpperCase() + arg.slice(1)
 }
 
 const getNextDay = (numberOfDays: number = 1) =>
@@ -116,6 +147,7 @@ const getMealAndDate = (id: string) => {
 }
 
 export {
+  startWithCapital,
   calcAverage,
   formatToPercentage,
   calcFrequency,
@@ -130,4 +162,5 @@ export {
   calcCalendar,
   calcMacros,
   sumAmount,
+  checkMacrosPercentage,
 }

@@ -18,14 +18,13 @@ import Head from "next/head"
 import { setDate } from "../../../store/slices/dateSlice"
 
 const AddMeal = () => {
-  const today = new Date()
-  const fromatedToday = formatDate(today)
+  const today = formatDate(new Date())
   const [menu, setMenu] = React.useState<boolean>(false)
   const dispatch = useDispatch()
   const products = useSelector((state) => state.products.products)
   const activeDate = useSelector((state) => state.date.date)
   React.useEffect(() => {
-    if (!activeDate) dispatch(setDate(fromatedToday.join()))
+    if (!activeDate) dispatch(setDate(today.join()))
   }, [])
 
   const calendar = calcCalendar()
@@ -34,14 +33,17 @@ const AddMeal = () => {
       <Head>
         <title>WHOseating: Your Meals</title>
       </Head>
-      <main className="min-h-screen max-w-screen-sm">
-        <MenuList close={() => setMenu(!menu)} open={menu} />
+      <main className="min-h-screen max-w-screen">
+        <MenuList close={() => setMenu(false)} open={menu} />
 
         <div>
           <TopSection
-            title={
-              "My meals, " + activeDate.slice(0, 3) + activeDate.slice(4, -5)
+            title={`My meals, ${
+              activeDate === today.join()
+                ? "today"
+                : activeDate.slice(0, 3) + activeDate.slice(4, -5)
             }
+            `}
             close={() => setMenu(!menu)}
           />
           <div className="pt-4 pb-3">

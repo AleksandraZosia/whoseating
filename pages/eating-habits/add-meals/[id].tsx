@@ -7,7 +7,7 @@ import { useSelector } from "../../../store/store"
 import {
   filterNutrients,
   getToBeAddedMealId,
-  formatDate,
+  startWithCapital,
   getMealAndDate,
 } from "../../../bussiness_logic/data_functions"
 import { MEALS } from "../../../bussiness_logic/constans"
@@ -42,16 +42,8 @@ const SearchMeal = ({ meals }: any) => {
   }, [data])
   console.log(currentDate.slice(0, -5))
   return (
-    <main className="min-h-screen max-w-screen">
-      <TopSection
-        title={
-          meals.title +
-          ", " +
-          (currentDate == formatDate(new Date()).join(",")
-            ? "today"
-            : currentDate)
-        }
-      />
+    <main className="min-h-screen">
+      <TopSection title={startWithCapital(meals.title)} />
       <Section>
         <ProductInput setFoods={setData} clickClose={setSearchedProducts} />
       </Section>
