@@ -24,7 +24,6 @@ const DaysSwiper = ({ dates }: Props) => {
   const [active, setActive] = React.useState<number>(
     calcInitIndex(currentDate || today)
   )
-  console.log(currentDate)
 
   return (
     <Swiper

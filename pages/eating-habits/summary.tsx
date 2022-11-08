@@ -6,6 +6,7 @@ import Head from "next/head"
 import React from "react"
 import SecondaryHeader from "../../components/atoms/SecondaryHeader"
 import FoodChart from "../../components/atoms/Chart"
+
 import MenuList from "../../components/molecules/MenuList"
 import { macrosData, varietyPointsData } from "../../bussiness_logic/chartsData"
 import {
@@ -13,17 +14,14 @@ import {
   calcVarietyPoints,
 } from "../../bussiness_logic/data_functions"
 import Section from "../../components/layouts/Section"
+import ChartContainer from "../../components/molecules/ChartContainer"
 
 const FoodSummary = () => {
   const date = formatDate(new Date())
   const [menu, setMenu] = React.useState<boolean>(false)
   const foods = useSelector((state) => state.products.products)
   const todaysFoods = foods.filter((food) => food.date === date.join(","))
-  console.log(
-    varietyPointsData(todaysFoods.map((food) => food.name)),
-    calcFrequency(todaysFoods.map((food) => food.name)),
-    calcVarietyPoints(calcFrequency(todaysFoods.map((food) => food.name)))
-  )
+
   return (
     <div>
       <Head>
@@ -40,15 +38,13 @@ const FoodSummary = () => {
             <Section>
               <SecondaryHeader title="Today's Macronutrinents" />
 
-              <div className="h-40 border-2 border-green">
-                <FoodChart children={macrosData(todaysFoods)} />
-              </div>
+              <FoodChart childrenData={macrosData(todaysFoods)} />
             </Section>
             <Section>
               <SecondaryHeader title={"Today's variety points"} />
               <div className="h-40">
                 <FoodChart
-                  children={varietyPointsData(
+                  childrenData={varietyPointsData(
                     todaysFoods.map((food) => food.name)
                   )}
                 />

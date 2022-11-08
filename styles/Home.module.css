@@ -3,7 +3,7 @@
 }
 
 .main {
-  @apply min-h-screen  max-w-screen-sm flex flex-col space-y-2;
+  @apply min-h-screen flex flex-col space-y-2;
   /* min-height: 100vh;
   padding: 4rem 0;
   flex: 1;

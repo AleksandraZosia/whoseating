@@ -9,17 +9,17 @@ import {
 const macrosData = (arg: Array<any>) => [
   {
     name: "proteins",
-    color: "hsl(77,70%, 50%)",
+    color: "hsl(177,43%, 61%)",
     loc: +calcMacros(arg, "p", sumAmount(arg)),
   },
   {
     name: "carbohydrates",
-    color: "hsl(355, 70%, 50%)",
+    color: "hsl(128, 74%, 21%)",
     loc: +calcMacros(arg, "c", sumAmount(arg)),
   },
   {
     name: "fat",
-    color: "hsl(13, 70%, 50%)",
+    color: "hsl(45, 90%, 66%)",
     loc: +calcMacros(arg, "f", sumAmount(arg)),
   },
 ]

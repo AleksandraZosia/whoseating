@@ -20,8 +20,7 @@ import Section from "../components/layouts/Section"
 
 const Home: NextPage = () => {
   const [menu, setMenu] = React.useState<boolean>(false)
-  const frequency = calcFrequency(EXAMPLE_INPUT)
-  console.log(calcFrequency(EXAMPLE_INPUT), calcVarietyPoints(frequency))
+
   return (
     <div className={styles.container}>
       <Head>
