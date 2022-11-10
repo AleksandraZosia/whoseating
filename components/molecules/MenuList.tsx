@@ -19,11 +19,12 @@ const MenuList = ({ close, open }: Props) => {
   const active = window?.location.pathname
   return (
     <div
-      className={` fixed z-50 inset-y-0 w-3/4 lg:w-1/4 -left-40 transition duration-[800ms] ease-linear ${
-        open ? " translate-x-40" : "-translate-x-40 "
+      className={` fixed z-50 inset-y-0 w-3/4 lg:w-1/4 -left-40 lg:-left-60 transition duration-[800ms] ease-linear ${
+        open
+          ? " translate-x-40 lg:translate-x-60"
+          : "-translate-x-40 lg:-translate-x-60"
       }`}
     >
-      <div className={`fixed inset-0`} onClick={close} />
       <div>
         <div className="fixed  left-0 h-full shadow-lg max-w-screen-sm bg-green bg-opacity-90 text-white  min-h-screen">
           <div className="p-6">
