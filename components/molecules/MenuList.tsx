@@ -25,26 +25,24 @@ const MenuList = ({ close, open }: Props) => {
           : "-translate-x-40 lg:-translate-x-60"
       }`}
     >
-      <div>
-        <div className="fixed  left-0 h-full shadow-lg max-w-screen-sm bg-green bg-opacity-90 text-white  min-h-screen">
-          <div className="p-6">
-            <ClickableIcon
-              src="/close.svg"
-              alt="close"
-              handleClick={close}
-              h={20}
-              w={20}
-            />
-          </div>
-          {options.map((option) => (
-            <div
-              key={option.id}
-              className={`px-6 ${active == option?.url && "bg-darkgreen"}`}
-            >
-              <Link href={option.url}>{option.name}</Link>
-            </div>
-          ))}
+      <div className="fixed  left-0 h-full shadow-lg max-w-screen-sm bg-green bg-opacity-90 text-white  min-h-screen">
+        <div className="p-6">
+          <ClickableIcon
+            src="/close.svg"
+            alt="close"
+            handleClick={close}
+            h={20}
+            w={20}
+          />
         </div>
+        {options.map((option) => (
+          <div
+            key={option.id}
+            className={`px-6 ${active == option?.url && "bg-darkgreen"}`}
+          >
+            <Link href={option.url}>{option.name}</Link>
+          </div>
+        ))}
       </div>
     </div>
   )
