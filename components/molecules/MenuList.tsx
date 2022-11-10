@@ -15,11 +15,12 @@ const MenuList = ({ close, open }: Props) => {
     { name: "My Stats", id: 3, url: "/eating-habits/summary" },
     { name: "About WHO Dietary", id: 4, url: "/about" },
   ]
+  console.log(open)
   const active = window?.location.pathname
   return (
     <div
-      className={` fixed z-50 inset-y-0 w-3/4 -left-40 transition duration-[800ms] ease-linear ${
-        open ? " translate-x-40" : "-translate-x-40"
+      className={` fixed z-50 inset-y-0 w-3/4 lg:w-1/4 -left-40 transition duration-[800ms] ease-linear ${
+        open ? " translate-x-40" : "-translate-x-40 "
       }`}
     >
       <div className={`fixed inset-0`} onClick={close} />
