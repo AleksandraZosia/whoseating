@@ -15,12 +15,13 @@ const AmountInput = ({
   const dispatch = useDispatch()
 
   return (
-    <label className="flex gap-2 w-1/5 ">
+    <label className="flex gap-2 w-1/5 items-center">
       <input
         type="number"
         onChange={(e) => handleChange(e.target.value)}
         value={amount}
         className="bg-white rounded-md"
+        required
       />
       <p>{measuringUnit}</p>
     </label>

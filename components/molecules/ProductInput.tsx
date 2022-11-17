@@ -29,8 +29,8 @@ const ProductInput = ({ clickClose, setFoods }: Props) => {
   }, [productName])
 
   return (
-    <div className="flex border justify-center w-fit bg-white px-1 text-xs gap-2 justify-between rounded-xl text-darkestgreen focus:border dark:bg-darkgreen dark:text-beige border-none">
-      <BiSearch />
+    <div className="flex border items-center mt-2 w-fit bg-white px-1 text-xs gap-2 justify-between rounded-xl text-darkestgreen active:border-darkgreen dark:bg-darkgreen dark:text-beige border-none">
+      <BiSearch className="text-xs" />
       <input
         placeholder="search ingridients"
         type="text"
@@ -47,6 +47,8 @@ const ProductInput = ({ clickClose, setFoods }: Props) => {
           setFoods([])
           clickClose([])
         }}
+        h={10}
+        w={10}
       />
     </div>
   )

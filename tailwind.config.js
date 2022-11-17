@@ -28,6 +28,7 @@ module.exports = {
         green: "#274110",
         lightgreen: "#B5D49A",
         beige: "#E5E5E5",
+        darkpink: "#7A343C",
       },
       backgroundColor: {
         darkestgreen: "#021B13",
@@ -35,6 +36,7 @@ module.exports = {
         green: "#4B7150",
         lightgreen: "#B5D49A",
         beige: "#E5E5E5",
+        lightpink: "#F56476",
       },
       keyframes: {
         slideIn: {

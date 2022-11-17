@@ -19,7 +19,7 @@ interface Props {
 
 const Ingridient = ({
   ingName,
-  ingAmount = 0,
+  ingAmount,
   meal,
   nutrients,
   id,
@@ -88,22 +88,24 @@ const Ingridient = ({
             measuringUnit="grams"
           />
           <button
-            className="bg-darkgreen py-1 rounded-md text-xs text-white px-2"
+            className="bg-lightpink bg-opacity-80 py-1 rounded-md text-xs text-white px-2"
             onClick={() => {
-              dispatch(
-                addProduct({
-                  name: ingName,
-                  amount: amount,
-                  date: choosenDate,
-                  meal: meal,
-                  id: id,
-                  nutrients: {
-                    f: nutrients.f,
-                    c: nutrients.c,
-                    p: nutrients.p,
-                  },
-                })
-              )
+              amount
+                ? dispatch(
+                    addProduct({
+                      name: ingName,
+                      amount: amount,
+                      date: choosenDate,
+                      meal: meal,
+                      id: id,
+                      nutrients: {
+                        f: nutrients.f,
+                        c: nutrients.c,
+                        p: nutrients.p,
+                      },
+                    })
+                  )
+                : null
               setIsChoosen(!isChoosen)
               handleClick([])
             }}
