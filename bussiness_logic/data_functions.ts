@@ -64,11 +64,11 @@ const calcFrequency = (arr: Array<any>) => {
 
 const calcVarietyPoints = (arr: Array<any>) => {
   const one100percent = arr.reduce((a, b) => a + b[1], 0)
-  const precentagesInDiet = arr.map(([name, amount]) => [
+  const precentagesInDiet = arr.map(([name, frequency]) => [
     name,
-    (amount / one100percent) * 100,
+    (frequency / one100percent) * 100,
   ])
-  let varietyPoints = precentagesInDiet.reduce((acc, [_, percentage]) => {
+  const varietyPoints = precentagesInDiet.reduce((acc, [_, percentage]) => {
     percentage >= 25.5 ? (acc = acc - Math.round(percentage)) : null
     return acc
   }, 100)

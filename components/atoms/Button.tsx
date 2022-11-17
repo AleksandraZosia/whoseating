@@ -10,7 +10,7 @@ const Button = ({ text, href }: Props) => {
 
   return (
     <button
-      className="bg-green text-white py-1 px-4 text-xs rounded-2xl text-center w-fit"
+      className="bg-green text-white py-1 px-4 text-xs rounded-2xl text-center w-fit cursor-pointer"
       onClick={() => router.push(href)}
     >
       {text}

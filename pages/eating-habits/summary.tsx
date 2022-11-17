@@ -5,8 +5,8 @@ import TopSection from "../../components/molecules/TopSection"
 import Head from "next/head"
 import React from "react"
 import SecondaryHeader from "../../components/atoms/SecondaryHeader"
-import FoodChart from "../../components/atoms/Chart"
-
+import FoodChart from "../../components/atoms/MacrosChart"
+import VarietyChart from "../../components/atoms/VarietyChart"
 import MenuList from "../../components/molecules/MenuList"
 import { macrosData, varietyPointsData } from "../../bussiness_logic/chartsData"
 import {
@@ -21,13 +21,12 @@ const FoodSummary = () => {
   const [menu, setMenu] = React.useState<boolean>(false)
   const foods = useSelector((state) => state.products.products)
   const todaysFoods = foods.filter((food) => food.date === date.join(","))
-
   return (
     <div>
       <Head>
         <title>WHOs eating: Summary</title>
       </Head>
-      <main className="min-h-screen max-w-screen flex flex-col ">
+      <main className="min-h-screen w-screen flex flex-col ">
         <MenuList close={() => setMenu(false)} open={menu} />
         <TopSection
           title={"My Stats, " + date[0] + " " + date[1].slice(0, -5)}
@@ -43,7 +42,7 @@ const FoodSummary = () => {
             <Section>
               <SecondaryHeader title={"Today's variety points"} />
               <div className="h-40">
-                <FoodChart
+                <VarietyChart
                   childrenData={varietyPointsData(
                     todaysFoods.map((food) => food.name)
                   )}

@@ -34,11 +34,21 @@ const CenteredMetric = ({
   centerX,
   centerY,
 }: SunburstCustomLayerProps<RawDatum>) => {
-  const total = nodes.length === 3 ? checkMacrosPercentage(nodes) : "great"
+  const total = nodes
+    .filter((node) => node.id)
+    .reduce((acc, points) => {
+      if (points.percentage < 33) {
+        return (acc = "bad")
+      }
+      if (points.percentage > 66) {
+        return (acc = "great")
+      }
+      return (acc = "so so")
+    }, "")
   const dimensions = 61
   const x = centerX - dimensions / 2
   const y = centerY - dimensions / 2
-
+  console.log(nodes)
   return total === "bad" ? (
     <Bad x={x} y={y} />
   ) : total === "great" ? (
@@ -46,20 +56,9 @@ const CenteredMetric = ({
   ) : (
     <SoSo x={x} y={y} />
   )
-
-  // <text
-  //   x={centerX}
-  //   y={centerY}
-  //   textAnchor="middle"
-  //   dominantBaseline="central"
-  // >
-  //   <p>
-
-  //   </p>
-  // </text>
 }
 
-const FoodChart = ({ childrenData }: Props) => {
+const PointsChart = ({ childrenData }: Props) => {
   const foods = useSelector((state) => state.products.products)
   const today = formatDate(new Date())
   const todaysFoods = foods.filter(
@@ -71,12 +70,7 @@ const FoodChart = ({ childrenData }: Props) => {
     color: "hsl(217, 70%, 50%)",
     children: childrenData,
   }
-  const colors = [
-    "hsla(177, 43%, 61%, 1)",
-
-    "hsla(128, 74%, 21%, 1)",
-    "hsla(45, 90%, 66%, 1)",
-  ]
+  const colors = ["hsla(128, 74%, 21%, 1)", "hsla(0, 0%, 85%,1)"]
 
   return (
     <div className="h-40 bg-white rounded-xl">
@@ -104,4 +98,4 @@ const FoodChart = ({ childrenData }: Props) => {
   )
 }
 
-export default FoodChart
+export default PointsChart
