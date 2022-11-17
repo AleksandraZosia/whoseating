@@ -7,7 +7,7 @@ interface Props {
   w?: number
 }
 
-const ClickableIcon = ({ handleClick, src, alt, h = 24, w = 24 }: Props) => {
+const ClickableIcon = ({ handleClick, src, alt, h = 20, w = 20 }: Props) => {
   return (
     <div
       onClick={handleClick}

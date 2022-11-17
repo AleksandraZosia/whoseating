@@ -37,7 +37,7 @@ const ProductInput = ({ clickClose, setFoods }: Props) => {
         onChange={(e) => handleChange(e)}
         aria-label="search ingridients"
         value={productName}
-        className="bg-transparent"
+        className="bg-transparent py-0.5 text-sm"
       />
       <ClickableIcon
         src="/close.svg"

@@ -17,10 +17,12 @@ module.exports = {
           "0.8rem",
           {
             fontWeight: "700",
-            lineHeight: "1.3rem",
+            lineHeight: "1rem",
           },
         ],
-        xs: "0.6rem",
+        md: "0.85rem",
+        sm: "0.6rem",
+        xs: "0.5rem",
       },
       colors: {
         darkestgreen: "#021B13",

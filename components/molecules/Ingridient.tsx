@@ -34,14 +34,14 @@ const Ingridient = ({
     (state) => state.searchedProducts.searchedProducts
   )
   return (
-    <div className="flex flex-col dark:invert ">
-      <div className="flex justify-between px-2">
+    <div className="flex flex-col dark:invert py-1 ">
+      <div className="flex justify-between px-2 items-center gap-1">
         <div
-          className={`flex flex-col text-xs w-full ${
+          className={`flex flex-col text-sm w-full ${
             ingAmount ? "text-green" : "text-darkestgreen"
           }`}
         >
-          <p>{ingName}</p>
+          <p className="font-semibold">{ingName}</p>
           <ProductSummary
             f={nutrients.f}
             c={nutrients.c}
@@ -63,6 +63,8 @@ const Ingridient = ({
           <ClickableIcon
             src="/add_ing.svg"
             alt="add product"
+            h={20}
+            w={20}
             handleClick={() => {
               setIsChoosen(!isChoosen)
               dispatch(

@@ -20,7 +20,7 @@ const AmountInput = ({
         type="number"
         onChange={(e) => handleChange(e.target.value)}
         value={amount}
-        className="bg-white rounded-md"
+        className="bg-white rounded-md p-1 text-xs"
         required
       />
       <p>{measuringUnit}</p>
