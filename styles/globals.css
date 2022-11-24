@@ -16,14 +16,14 @@ a {
   box-sizing: border-box;
 }
 
-@media (prefers-color-scheme: dark) {
+@media (prefers-color-scheme: light) {
   html {
-    color-scheme: dark;
+    color-scheme: light;
   }
-  body {
+  /* body {
     color: beige;
-    background: rgba(0, 8, 0, 0.972);
-  }
+    background: rgba(0, 8, 0, 0.91);
+  } */
 }
 
 .margin {

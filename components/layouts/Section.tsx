@@ -3,7 +3,7 @@ interface Props {
 }
 
 const Section = ({ children }: Props) => {
-  return <section className="margin dark:text-beige">{children}</section>
+  return <section className="margin">{children}</section>
 }
 
 export default Section

@@ -10,7 +10,7 @@ interface Props {
 const ProductsList = ({ bg, products, handleClick }: Props) => {
   return (
     <>
-      <div className="rounded-xl bg-white flex flex-col gap-2 pt-2  text-xs divide-y dark:bg-darkgreen">
+      <div className="rounded-xl bg-white flex flex-col  divide-y text-xs  ">
         {products?.map((product) => (
           <Ingridient
             ingName={product.name}

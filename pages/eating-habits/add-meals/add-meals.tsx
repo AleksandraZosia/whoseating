@@ -33,7 +33,7 @@ const AddMeal = () => {
       <Head>
         <title>WHOseating: Your Meals</title>
       </Head>
-      <main className="min-h-screen w-screen">
+      <main className="min-h-screen w-screen box-boeder">
         <MenuList close={() => setMenu(false)} open={menu} />
 
         <div>

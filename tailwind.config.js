@@ -17,10 +17,12 @@ module.exports = {
           "0.8rem",
           {
             fontWeight: "700",
-            lineHeight: "1.3rem",
+            lineHeight: "1rem",
           },
         ],
-        xs: "0.6rem",
+        md: "0.85rem",
+        sm: "0.6rem",
+        xs: "0.5rem",
       },
       colors: {
         darkestgreen: "#021B13",
@@ -28,6 +30,7 @@ module.exports = {
         green: "#274110",
         lightgreen: "#B5D49A",
         beige: "#E5E5E5",
+        darkpink: "#7A343C",
       },
       backgroundColor: {
         darkestgreen: "#021B13",
@@ -35,6 +38,7 @@ module.exports = {
         green: "#4B7150",
         lightgreen: "#B5D49A",
         beige: "#E5E5E5",
+        lightpink: "#F56476",
       },
       keyframes: {
         slideIn: {

@@ -42,7 +42,7 @@ const SearchMeal = ({ meals }: any) => {
   }, [data])
   console.log(currentDate.slice(0, -5))
   return (
-    <main className="min-h-screen w-screen">
+    <main className="min-h-screen w-screen box-border">
       <TopSection title={startWithCapital(meals.title)} />
       <Section>
         <ProductInput setFoods={setData} clickClose={setSearchedProducts} />

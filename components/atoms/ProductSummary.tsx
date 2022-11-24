@@ -6,9 +6,8 @@ interface Props {
   bg?: string
 }
 const ProductSummary = ({ f, c, p, amount, bg = "" }: Props) => {
-  const style = ` flex justify-between ${bg}`
   return (
-    <span className={style}>
+    <span className={` flex justify-between ${bg} pt-0.5 text-xs`}>
       <p>P: {p}%</p>
       <p>F: {f}%</p>
       <p>C: {c}%</p>

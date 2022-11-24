@@ -19,7 +19,7 @@ interface Props {
 
 const Ingridient = ({
   ingName,
-  ingAmount = 0,
+  ingAmount,
   meal,
   nutrients,
   id,
@@ -34,14 +34,14 @@ const Ingridient = ({
     (state) => state.searchedProducts.searchedProducts
   )
   return (
-    <div className="flex flex-col dark:invert ">
-      <div className="flex justify-between px-2">
+    <div className="flex flex-col py-1 ">
+      <div className="flex justify-between px-2 items-center gap-1">
         <div
-          className={`flex flex-col text-xs w-full ${
+          className={`flex flex-col text-sm w-full ${
             ingAmount ? "text-green" : "text-darkestgreen"
           }`}
         >
-          <p>{ingName}</p>
+          <p className="font-semibold">{ingName}</p>
           <ProductSummary
             f={nutrients.f}
             c={nutrients.c}
@@ -63,6 +63,8 @@ const Ingridient = ({
           <ClickableIcon
             src="/add_ing.svg"
             alt="add product"
+            h={20}
+            w={20}
             handleClick={() => {
               setIsChoosen(!isChoosen)
               dispatch(
@@ -81,29 +83,31 @@ const Ingridient = ({
         )}
       </div>
       {isChoosen ? (
-        <div className="bg-[#E8E4DA] flex px-1 py-2 justify-between text-darkestgreen dark:bg-beige">
+        <div className="bg-[#E8E4DA] flex px-1 py-2 justify-between text-darkestgreen ">
           <AmountInput
             handleChange={setAmount}
             amount={amount}
             measuringUnit="grams"
           />
           <button
-            className="bg-darkgreen py-1 rounded-md text-xs text-white px-2"
+            className="bg-lightpink bg-opacity-80 py-1 rounded-md text-xs text-white px-2"
             onClick={() => {
-              dispatch(
-                addProduct({
-                  name: ingName,
-                  amount: amount,
-                  date: choosenDate,
-                  meal: meal,
-                  id: id,
-                  nutrients: {
-                    f: nutrients.f,
-                    c: nutrients.c,
-                    p: nutrients.p,
-                  },
-                })
-              )
+              amount
+                ? dispatch(
+                    addProduct({
+                      name: ingName,
+                      amount: amount,
+                      date: choosenDate,
+                      meal: meal,
+                      id: id,
+                      nutrients: {
+                        f: nutrients.f,
+                        c: nutrients.c,
+                        p: nutrients.p,
+                      },
+                    })
+                  )
+                : null
               setIsChoosen(!isChoosen)
               handleClick([])
             }}
