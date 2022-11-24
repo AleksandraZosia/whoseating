@@ -6,7 +6,7 @@ interface Props {
 const SecondaryHeader = ({ title, onClick }: Props) => {
   return (
     <h2
-      className="text-secondaryHeader text-darkgreen dark:text-beige font-black"
+      className="text-secondaryHeader text-darkgreen font-black"
       onClick={onClick}
     >
       {title}

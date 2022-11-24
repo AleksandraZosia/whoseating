@@ -13,7 +13,7 @@ const ClickableIcon = ({ handleClick, src, alt, h = 20, w = 20 }: Props) => {
       onClick={handleClick}
       className="h-fit w-fit lg:cursor-pointer flex place-content-center"
     >
-      <Image src={src} alt={alt} height={h} width={w} className="dark:invert" />
+      <Image src={src} alt={alt} height={h} width={w} />
     </div>
   )
 }

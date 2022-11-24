@@ -13,13 +13,7 @@ const TopSection = ({ title, close }: Props) => {
     <div className="flex w-screen justify-start gap-4 px-6 pt-6 items-center">
       {!close ? (
         <Link href="/eating-habits/add-meals/add-meals">
-          <Image
-            src="/back_arrow.svg"
-            alt="go back"
-            height={25}
-            width={25}
-            className="dark:invert"
-          />
+          <Image src="/back_arrow.svg" alt="go back" height={25} width={25} />
         </Link>
       ) : (
         <ClickableIcon
